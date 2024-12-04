@@ -16,6 +16,7 @@ class Assets {
   static const String imagesFacebookIcon = 'assets/images/facebook_icon.svg';
   static const String imagesFeaturedIconBackground = 'assets/images/featured_icon_background.svg';
   static const String imagesFilter = 'assets/images/filter.svg';
+  static const String imagesFilter2 = 'assets/images/filter2.svg';
   static const String imagesGoogleIcon = 'assets/images/google_icon.svg';
   static const String imagesLogo = 'assets/images/logo.svg';
   static const String imagesNotification = 'assets/images/notification.svg';
