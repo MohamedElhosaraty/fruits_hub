@@ -31,6 +31,7 @@ class AuthRepoImplemention extends AuthRepo {
           email: email, password: password);
       var userEntity = UserEntity(email: email, name: name, uId: user.uid);
       await addUserData(user: userEntity);
+      await saveUserData(user: userEntity);
 
       return right(
         userEntity,

@@ -11,6 +11,8 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:twitter_login/twitter_login.dart';
 
 class FirebaseAuthServices {
+
+  /// ------------------ create user with email and password ------------------
   Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
