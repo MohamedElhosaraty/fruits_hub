@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/app_color.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
+import 'package:fruits_hub/core/widget/custom_network_image.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
@@ -32,8 +33,8 @@ class FruitItem extends StatelessWidget {
                     height: 80,
                     width: 100,
                   ) : Flexible(
-                    child: Image.network(
-                      productEntity.imageUrl!,
+                    child: CustomNetworkImage(
+                      imageUrl: productEntity.imageUrl!,
                     ),
                   ),
                   20.verticalSpace,

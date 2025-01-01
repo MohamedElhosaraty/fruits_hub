@@ -28,6 +28,7 @@ class Assets {
   static const String imagesProfileImage = 'assets/images/profile_image.png';
   static const String imagesSearchIcon = 'assets/images/search_icon.svg';
   static const String imagesSplashBottom = 'assets/images/splash_bottom.svg';
+  static const String imagesTrash = 'assets/images/trash.svg';
   static const String imagesTwitter = 'assets/images/twitter.svg';
   static const String imagesWatermelon = 'assets/images/watermelon.png';
   static const String outlineHome = 'assets/images/outline/home.svg';

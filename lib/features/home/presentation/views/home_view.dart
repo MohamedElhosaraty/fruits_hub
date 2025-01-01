@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/cubits/products_cubit/products_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/home_view_body.dart';
 
-import '../../../../../core/repos/products_repo/products_repo.dart';
-import '../../../../../core/services/get_it_services.dart';
+import '../../../../core/repos/products_repo/products_repo.dart';
+import '../../../../core/services/get_it_services.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

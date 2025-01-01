@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/features/home/presentation/views/cart_view.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/home_view.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/products_view.dart';
+import 'package:fruits_hub/features/home/presentation/views/home_view.dart';
+import 'package:fruits_hub/features/home/presentation/views/products_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -31,6 +32,7 @@ class _MainViewState extends State<MainView> {
             children: const [
               HomeView(),
               ProductsView(),
+              CartView(),
             ],
           ),),
     );
