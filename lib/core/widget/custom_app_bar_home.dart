@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
 import 'package:fruits_hub/core/widget/notification_widget.dart';
 
-class CustomAppBarHome extends StatefulWidget implements PreferredSizeWidget{
-  const CustomAppBarHome({super.key, required this.title,this.showBackButton = true});
+class CustomAppBarHome extends StatefulWidget implements PreferredSizeWidget {
+  const CustomAppBarHome(
+      {super.key,
+      required this.title,
+      this.showBackButton = true,
+      this.showNotification = true});
 
   final String title;
-  final bool showBackButton ;
+  final bool showBackButton;
 
+  final bool showNotification;
 
   @override
   State<CustomAppBarHome> createState() => _CustomAppBarHomeState();
@@ -18,7 +23,6 @@ class CustomAppBarHome extends StatefulWidget implements PreferredSizeWidget{
 }
 
 class _CustomAppBarHomeState extends State<CustomAppBarHome> {
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -26,15 +30,18 @@ class _CustomAppBarHomeState extends State<CustomAppBarHome> {
       elevation: 0,
       centerTitle: true,
       title: Text(
-        widget.title,style: TextStyles.bold19,
+        widget.title,
+        style: TextStyles.bold19,
       ),
       actions: [
-        const NotificationWidget(),
+        Visibility(
+            visible: widget.showNotification,
+            child: const NotificationWidget()),
       ],
       leading: Visibility(
         visible: widget.showBackButton,
         child: GestureDetector(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
           child: Icon(Icons.arrow_back_ios_new),
