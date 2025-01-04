@@ -5,7 +5,8 @@ import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/app_color.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
 import 'package:fruits_hub/core/widget/custom_network_image.dart';
-import 'package:fruits_hub/features/home/presentation/cubits/cart_cubit.dart';
+import 'package:fruits_hub/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:fruits_hub/features/home/presentation/cubits/favourite_cubit/favourite_cubit.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
@@ -64,7 +65,7 @@ class FruitItem extends StatelessWidget {
                     ),
                     trailing: GestureDetector(
                       onTap: (){
-                        context.read<CartCubit>().addProduct(productEntity);
+                        context.watch<CartCubit>().addProduct(productEntity);
                       },
                       child: CircleAvatar(
                         backgroundColor: AppColor.primaryColor,
@@ -78,9 +79,13 @@ class FruitItem extends StatelessWidget {
             top: 8,
             right: 8,
             child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.favorite_border_outlined),),
+              onPressed: () {
+                context.watch<FavouriteCubit>().addProduct(productEntity);
+              },
+              icon: Icon(Icons.favorite,
+              color: context.read<FavouriteCubit>().isExistToFavourite ? Colors.red : Colors.grey,),
           ),
+          )
         ],
       ),
     );
