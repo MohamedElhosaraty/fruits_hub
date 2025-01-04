@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/features/home/presentation/cubits/cart_cubit.dart';
+import 'package:fruits_hub/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:fruits_hub/features/home/presentation/cubits/favourite_cubit/favourite_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/main_view_body_bloc_consumer.dart';
 
@@ -18,8 +19,15 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CartCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FavouriteCubit(),
+        ),
+      ],
       child: Scaffold(
         bottomNavigationBar: CustomBottomNavigationBar(
           onItemTapped: (index) {
