@@ -30,6 +30,6 @@ class ProductEntity extends Equatable {
         this.imageUrl});
 
   @override
-   List<Object?> get props => [code];
+   List<Object?> get props => [code,name];
 
 }
