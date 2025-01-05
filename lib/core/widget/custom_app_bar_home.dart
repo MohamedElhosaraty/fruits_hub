@@ -18,8 +18,8 @@ class CustomAppBarHome extends StatefulWidget implements PreferredSizeWidget {
   State<CustomAppBarHome> createState() => _CustomAppBarHomeState();
 
   @override
-  // TODO: implement preferredSize
-  Size get preferredSize => throw UnimplementedError();
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
 }
 
 class _CustomAppBarHomeState extends State<CustomAppBarHome> {
