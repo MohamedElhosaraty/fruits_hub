@@ -65,7 +65,7 @@ class FruitItem extends StatelessWidget {
                     ),
                     trailing: GestureDetector(
                       onTap: (){
-                        context.watch<CartCubit>().addProduct(productEntity);
+                        context.read<CartCubit>().addProduct(productEntity);
                       },
                       child: CircleAvatar(
                         backgroundColor: AppColor.primaryColor,
@@ -80,10 +80,15 @@ class FruitItem extends StatelessWidget {
             right: 8,
             child: IconButton(
               onPressed: () {
-                context.watch<FavouriteCubit>().addProduct(productEntity);
+                if(context.read<FavouriteCubit>().isFavouriteExist(productEntity)) {
+                  context.read<FavouriteCubit>().deleteFavouriteItem(productEntity);
+                }else{
+                  context.read<FavouriteCubit>().addProduct(productEntity);
+                }
               },
               icon: Icon(Icons.favorite,
-              color: context.read<FavouriteCubit>().isExistToFavourite ? Colors.red : Colors.grey,),
+              color: context.watch<FavouriteCubit>().isFavouriteExist(productEntity) ? Colors.red :
+              Colors.grey,),
           ),
           )
         ],
