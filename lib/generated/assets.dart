@@ -13,11 +13,13 @@ class Assets {
   static const String imagesAppIcon = 'assets/images/app_icon.png';
   static const String imagesAppleIcon = 'assets/images/apple_icon.svg';
   static const String imagesCheck = 'assets/images/Check.svg';
+  static const String imagesEditLocation = 'assets/images/edit_location.svg';
   static const String imagesFacebookIcon = 'assets/images/facebook_icon.svg';
   static const String imagesFeaturedIconBackground = 'assets/images/featured_icon_background.svg';
   static const String imagesFilter = 'assets/images/filter.svg';
   static const String imagesFilter2 = 'assets/images/filter2.svg';
   static const String imagesGoogleIcon = 'assets/images/google_icon.svg';
+  static const String imagesLocation = 'assets/images/location.svg';
   static const String imagesLogo = 'assets/images/logo.svg';
   static const String imagesNotification = 'assets/images/notification.svg';
   static const String imagesPageViewItem1BackgroundImage = 'assets/images/page_view_item1_background_image.svg';
