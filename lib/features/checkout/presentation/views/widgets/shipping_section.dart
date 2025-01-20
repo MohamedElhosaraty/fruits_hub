@@ -31,7 +31,7 @@ class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAli
           isSelected: selectIndex == 0,
           title: "الدفع عند الاستلام",
           subtitle: "التسليم من المكان",
-          price: (orderEntity.cartEntity.calculateTotalPrice() + 40).toString(),
+          price: (orderEntity.cartEntity.calculateTotalPrice() + 30).toString(),
         ),
         16.verticalSpace,
         ShippingItem(
