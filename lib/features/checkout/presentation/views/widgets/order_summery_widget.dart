@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/payment_item.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
+import '../../../domain/entites/order_entity.dart';
 
 class OrderSummeryWidget extends StatelessWidget {
   const OrderSummeryWidget({super.key});
@@ -23,7 +25,7 @@ class OrderSummeryWidget extends StatelessWidget {
                 ),
                 Spacer(),
                 Text(
-                  "150 جنيه",
+                  "${context.read<OrderEntity>().cartEntity.calculateTotalPrice()} جنيه",
                   style: TextStyles.semiBold16,
                 ),
               ],
@@ -61,7 +63,7 @@ class OrderSummeryWidget extends StatelessWidget {
                 Text("الكلي ", style: TextStyles.bold16),
                 Spacer(),
                 Text(
-                  "180 جنية",
+                  "${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 30} جنية",
                   style: TextStyles.bold16,
                 ),
               ],

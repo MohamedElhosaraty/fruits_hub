@@ -7,6 +7,8 @@ import 'package:fruits_hub/features/checkout/domain/entites/order_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps_page_view.dart';
 
+import '../../manger/add_order_cubit/add_order_cubit.dart';
+
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
 
@@ -67,6 +69,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 _handleShippingSectionValidation(context);
               } else if (currentIndex == 1) {
                 _handleAddressValidation();
+              }else{
+                var orderEntity = context.read<OrderEntity>();
+                context.read<AddOrderCubit>().addOrder(order: orderEntity);
               }
             },
             text: getStepText(currentIndex),
