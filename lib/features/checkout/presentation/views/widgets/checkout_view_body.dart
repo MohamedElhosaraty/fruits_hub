@@ -101,6 +101,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     }
   }
 
+
   String getStepText(int currentIndex) {
     switch (currentIndex) {
       case 0:
