@@ -8,7 +8,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruits_hub/core/errors/exceptions.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'package:twitter_login/twitter_login.dart';
+//import 'package:twitter_login/twitter_login.dart';
 
 class FirebaseAuthServices {
 
@@ -176,23 +176,23 @@ class FirebaseAuthServices {
   // --------------------- Sign in with Twitter ---------------------
 
 
-Future<User> signInWithTwitter() async {
-
-    final TwitterLogin twitterLogin = TwitterLogin(
-        apiKey: "khjOHpXq2yQXa1NxndEckEv9Z",
-        apiSecretKey:'ZetFy3DwtBfDE4KOUyfEegIQANhusVCyr54Jeg5Wu52GG8Nqux',
-        redirectURI: 'https://developer.x.com/en/portal/projects/1858922644709494784/apps/29639731'
-    );
-    // Trigger the sign-in flow
-    final result = await twitterLogin.login();
-    // Create a credential from the access token
-    final token = TwitterAuthProvider.credential(
-      accessToken: result.authToken!,
-      secret: result.authTokenSecret!,
-    );
-    // Once signed in, return the UserCredential
-    return (await FirebaseAuth.instance.signInWithCredential(token)).user!;
-  }
+// Future<User> signInWithTwitter() async {
+//
+//     final TwitterLogin twitterLogin = TwitterLogin(
+//         apiKey: "khjOHpXq2yQXa1NxndEckEv9Z",
+//         apiSecretKey:'ZetFy3DwtBfDE4KOUyfEegIQANhusVCyr54Jeg5Wu52GG8Nqux',
+//         redirectURI: 'https://developer.x.com/en/portal/projects/1858922644709494784/apps/29639731'
+//     );
+//     // Trigger the sign-in flow
+//     final result = await twitterLogin.login();
+//     // Create a credential from the access token
+//     final token = TwitterAuthProvider.credential(
+//       accessToken: result.authToken!,
+//       secret: result.authTokenSecret!,
+//     );
+//     // Once signed in, return the UserCredential
+//     return (await FirebaseAuth.instance.signInWithCredential(token)).user!;
+//   }
 
 
   // ----------------- delete user ---------------------

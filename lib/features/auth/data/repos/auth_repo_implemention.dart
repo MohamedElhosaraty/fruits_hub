@@ -159,31 +159,31 @@ class AuthRepoImplemention extends AuthRepo {
       );
     }
   }
-
-  @override
-  Future<Either<Failure, UserEntity>> signInWithTwitter() async {
-    try {
-      var user = await firebaseAuthServices.signInWithTwitter();
-      var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
-      await saveUserData(user: userEntity);
-      var isUserExist = await databaseService.checkIsDataExist(
-          path: BackendEndpoint.getUserData, docuementId: user.uid);
-      if(isUserExist){
-        await getUserData(uId: user.uid);
-      }else{
-        await addUserData(user: UserModel.fromFirebaseUser(user));
-      }
-      return right(
-        userEntity,
-      );
-    } catch (e) {
-      log("Exception in AuthRepoImplemention.signInWithTwitter : ${e.toString()}");
-      return left(
-        ServerFailure('لقد حدث خطأ. الرجاء المحاولة مرة أخرى.'),
-      );
-    }
-  }
+  //
+  // @override
+  // Future<Either<Failure, UserEntity>> signInWithTwitter() async {
+  //   try {
+  //     var user = await firebaseAuthServices.signInWithTwitter();
+  //     var userEntity = UserModel.fromFirebaseUser(user);
+  //     await addUserData(user: userEntity);
+  //     await saveUserData(user: userEntity);
+  //     var isUserExist = await databaseService.checkIsDataExist(
+  //         path: BackendEndpoint.getUserData, docuementId: user.uid);
+  //     if(isUserExist){
+  //       await getUserData(uId: user.uid);
+  //     }else{
+  //       await addUserData(user: UserModel.fromFirebaseUser(user));
+  //     }
+  //     return right(
+  //       userEntity,
+  //     );
+  //   } catch (e) {
+  //     log("Exception in AuthRepoImplemention.signInWithTwitter : ${e.toString()}");
+  //     return left(
+  //       ServerFailure('لقد حدث خطأ. الرجاء المحاولة مرة أخرى.'),
+  //     );
+  //   }
+  // }
 
   Future<void> deleteUser(User? user) async {
     if (user != null) {
