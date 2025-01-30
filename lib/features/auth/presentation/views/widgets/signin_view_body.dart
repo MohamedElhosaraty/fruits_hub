@@ -109,14 +109,14 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 image: Assets.imagesFacebookIcon,
                 title: "تسجيل بواسطة فيسبوك",
               ),
-              16.verticalSpace,
-              SocialLoginButton(
-                onPressed: (){
-                  context.read<SignInCubit>().signInWithTwitter();
-                },
-                image: Assets.imagesTwitter,
-                title: "تسجيل بواسطة تويتر",
-              ),
+              // 16.verticalSpace,
+              // SocialLoginButton(
+              //   onPressed: (){
+              //     context.read<SignInCubit>().signInWithTwitter();
+              //   },
+              //   image: Assets.imagesTwitter,
+              //   title: "تسجيل بواسطة تويتر",
+              // ),
 
             ],
           ),
