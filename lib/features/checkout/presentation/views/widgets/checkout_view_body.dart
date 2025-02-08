@@ -1,13 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_hub/core/helper_functions/build_error_bar.dart';
+import 'package:fruits_hub/core/utils/app_keys.dart';
 import 'package:fruits_hub/core/widget/custom_button.dart';
 import 'package:fruits_hub/features/checkout/domain/entites/order_entity.dart';
+import 'package:fruits_hub/features/checkout/domain/entites/paypal_payment_entity/paypal_payment_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps_page_view.dart';
 
-import '../../manger/add_order_cubit/add_order_cubit.dart';
 
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
@@ -55,6 +59,8 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           CheckoutSteps(
             pageController: pageController,
             currentIndex: currentIndex,
+            valueNotifier: valueNotifier,
+            formKey: formKey,
           ),
           Expanded(
             child: CheckoutStepsPageView(
@@ -69,9 +75,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 _handleShippingSectionValidation(context);
               } else if (currentIndex == 1) {
                 _handleAddressValidation();
-              }else{
-                var orderEntity = context.read<OrderEntity>();
-                context.read<AddOrderCubit>().addOrder(order: orderEntity);
+              } else {
+                _processPayment(context);
+                // var orderEntity = context.read<OrderEntity>();
+                // context.read<AddOrderCubit>().addOrder(order: orderEntity);
               }
             },
             text: getStepText(currentIndex),
@@ -98,9 +105,39 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           duration: const Duration(milliseconds: 300), curve: Curves.bounceIn);
     } else {
       valueNotifier.value = AutovalidateMode.always;
+      buildErrorBar(context, "يرجي ملئ جميع الحقول");
     }
   }
 
+  void _processPayment(BuildContext context) {
+    var orderEntity = context.read<OrderEntity>();
+    PaypalPaymentEntity paypalPaymentEntity =
+        PaypalPaymentEntity.fromEntity(orderEntity);
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (BuildContext context) => PaypalCheckoutView(
+        sandboxMode: true,
+        clientId: kPaypalClientId,
+        secretKey: kPaypalSecretKey,
+        transactions: [
+          paypalPaymentEntity.toJson(),
+        ],
+        note: "Contact us for any questions on your order.",
+        onSuccess: (Map params) async {
+          print("onSuccess: $params");
+          Navigator.pop(context);
+          buildErrorBar(context, "تمت العملية بنجاح");
+        },
+        onError: (error) {
+          log("onError: $error");
+          buildErrorBar(context, "حدث خطأ في الدفع, حاول مره اخرى");
+          Navigator.pop(context);
+        },
+        onCancel: () {
+          print('cancelled:');
+        },
+      ),
+    ),);
+  }
 
   String getStepText(int currentIndex) {
     switch (currentIndex) {

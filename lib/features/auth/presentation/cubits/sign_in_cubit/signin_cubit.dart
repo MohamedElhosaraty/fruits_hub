@@ -63,16 +63,16 @@ class SignInCubit extends Cubit<SignInState> {
 
   // ---------------------- sign in with twitter --------------------- //
 
-  Future<void> signInWithTwitter() async {
-    emit(SignInLoading());
-    var result = await authRepo.signInWithTwitter();
-    result.fold(
-      (Failure) => emit(
-        SignInFailure(message: Failure.message),
-      ),
-      (UserEntity) => emit(
-        SignInSuccess(userEntity: UserEntity),
-      ),
-    );
-  }
+  // Future<void> signInWithTwitter() async {
+  //   emit(SignInLoading());
+  //   var result = await authRepo.signInWithTwitter();
+  //   result.fold(
+  //     (Failure) => emit(
+  //       SignInFailure(message: Failure.message),
+  //     ),
+  //     (UserEntity) => emit(
+  //       SignInSuccess(userEntity: UserEntity),
+  //     ),
+  //   );
+  // }
 }
